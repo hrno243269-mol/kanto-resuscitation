@@ -1,11 +1,40 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from '../top/TopEditor.module.css'
 import ImageUploader from '@/components/admin/ImageUploader'
 import Header from '@/components/public/Header'
 import Footer from '@/components/public/Footer'
 
 const ColorPicker = ({ name, label, value, onChange }: { name: string, label: string, value: string, onChange: (val: string) => void }) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    // 外部（テキストボックス等）からStateが変更された場合、Reactの監視外であるDOMにも直接同期する
+    useEffect(() => {
+        if (inputRef.current && inputRef.current.value !== value) {
+            inputRef.current.value = value || '#000000';
+        }
+    }, [value]);
+
+    // カラーピッカーをドラッグ中（リアルタイム）の処理
+    // ReactのonChangeに任せるとSafariで再レンダリング時に強制切断されるため、
+    // 生のDOMイベントリスナーでCSS変数を直接書き換え、Reactの機能（State）を完全に迂回する
+    useEffect(() => {
+        const el = inputRef.current;
+        if (!el) return;
+
+        const cssVarName = `--color-${name.replace('color', '').toLowerCase()}`;
+        const handleNativeInput = (e: Event) => {
+            const v = (e.target as HTMLInputElement).value;
+            const container = document.getElementById('settings-editor');
+            if (container) {
+                container.style.setProperty(cssVarName, v);
+            }
+        };
+
+        el.addEventListener('input', handleNativeInput);
+        return () => el.removeEventListener('input', handleNativeInput);
+    }, [name]);
+
     return (
         <div style={{ flex: 1 }}>
             <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>{label}</label>
@@ -13,8 +42,9 @@ const ColorPicker = ({ name, label, value, onChange }: { name: string, label: st
                 <input
                     type="color"
                     name={name}
-                    value={value || '#000000'} /* Safari fallback */
-                    onChange={e => onChange(e.target.value)}
+                    ref={inputRef}
+                    defaultValue={value || '#000000'} /* Safari fallback */
+                    onBlur={e => onChange(e.target.value)} // ドラッグ終了（ピッカーを閉じた時）のみStateへ保存
                     style={{ width: '50px', height: '50px', cursor: 'pointer', padding: 0, border: '1px solid #ccc', borderRadius: '4px' }}
                 />
                 <input
@@ -34,7 +64,7 @@ export default function SettingsEditorClient({ initialData, action }: any) {
     const [data, setData] = useState(initialData)
 
     return (
-        <div className={styles.splitContainer} style={{
+        <div id="settings-editor" className={styles.splitContainer} style={{
             '--color-primary': data.colorPrimary,
             '--color-secondary': data.colorSecondary,
             '--color-accent': data.colorAccent,
