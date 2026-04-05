@@ -57,3 +57,34 @@ export async function updatePages(formData: FormData) {
     revalidatePath('/greeting')
     revalidatePath('/organization')
 }
+
+export async function updateSettings(formData: FormData) {
+    const keys = [
+        'contactName', 'contactEmail', 'colorPrimary', 'colorSecondary', 'colorAccent',
+        'fontFamily', 'baseFontSize', 'titleFontSize',
+        'headerTitle', 'footerTitle', 'footerDesc', 'copyright'
+    ]
+
+    for (const key of keys) {
+        const val = formData.get(key) as string
+        if (val !== null && val !== undefined) {
+            await prisma.siteSetting.upsert({
+                where: { key },
+                update: { value: val },
+                create: { key, value: val }
+            })
+        }
+    }
+
+    const headerLogo = formData.get('headerLogo') as string
+    if (headerLogo !== null && headerLogo !== undefined) {
+        await prisma.siteSetting.upsert({
+            where: { key: 'headerLogo' },
+            update: { value: headerLogo },
+            create: { key: 'headerLogo', value: headerLogo }
+        })
+    }
+
+    revalidatePath('/admin/settings')
+    revalidatePath('/', 'layout')
+}
