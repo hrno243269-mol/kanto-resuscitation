@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
 import dynamic from 'next/dynamic'
-import 'react-quill/dist/quill.snow.css'
+import 'react-quill-new/dist/quill.snow.css'
 import styles from './RichTextEditor.module.css'
 
 // Disable SSR for react-quill since it uses window/document
-const ReactQuill = dynamic(() => import('react-quill'), {
+const ReactQuill = dynamic(() => import('react-quill-new'), {
     ssr: false,
     loading: () => <div className={styles.loading}>エディタを読み込み中...</div>
 })
