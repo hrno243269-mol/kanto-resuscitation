@@ -5,6 +5,31 @@ import ImageUploader from '@/components/admin/ImageUploader'
 import Header from '@/components/public/Header'
 import Footer from '@/components/public/Footer'
 
+const ColorPicker = ({ name, label, value, onChange }: { name: string, label: string, value: string, onChange: (val: string) => void }) => {
+    return (
+        <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>{label}</label>
+            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <input
+                    type="color"
+                    name={name}
+                    value={value || '#000000'} /* Safari fallback */
+                    onChange={e => onChange(e.target.value)}
+                    style={{ width: '50px', height: '50px', cursor: 'pointer', padding: 0, border: '1px solid #ccc', borderRadius: '4px' }}
+                />
+                <input
+                    type="text"
+                    value={value || '#000000'}
+                    onChange={e => onChange(e.target.value)}
+                    maxLength={7}
+                    placeholder="#RRGGBB"
+                    style={{ flex: 1, padding: '0.8rem', borderRadius: '8px', border: '1px solid #d2d2d7', background: '#f5f5f7', fontSize: '0.9rem', fontFamily: 'monospace' }}
+                />
+            </div>
+        </div>
+    )
+}
+
 export default function SettingsEditorClient({ initialData, action }: any) {
     const [data, setData] = useState(initialData)
 
@@ -51,18 +76,9 @@ export default function SettingsEditorClient({ initialData, action }: any) {
                         <span style={{ fontSize: '0.85rem', color: '#86868b', display: 'block', marginBottom: '1.5rem' }}>※色を選択した瞬間に、この設定画面のボタンなど全体の色がリアルタイムで変化して確認できます。反映を確認してから「全て更新する」を押してください。</span>
 
                         <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-                            <div style={{ flex: 1 }}>
-                                <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>メインカラー</label>
-                                <input type="color" name="colorPrimary" defaultValue={data.colorPrimary} onChange={e => setData({ ...data, colorPrimary: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
-                            </div>
-                            <div style={{ flex: 1 }}>
-                                <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>サブカラー</label>
-                                <input type="color" name="colorSecondary" defaultValue={data.colorSecondary} onChange={e => setData({ ...data, colorSecondary: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
-                            </div>
-                            <div style={{ flex: 1 }}>
-                                <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>アクセント</label>
-                                <input type="color" name="colorAccent" defaultValue={data.colorAccent} onChange={e => setData({ ...data, colorAccent: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
-                            </div>
+                            <ColorPicker name="colorPrimary" label="メインカラー" value={data.colorPrimary} onChange={val => setData({ ...data, colorPrimary: val })} />
+                            <ColorPicker name="colorSecondary" label="サブカラー" value={data.colorSecondary} onChange={val => setData({ ...data, colorSecondary: val })} />
+                            <ColorPicker name="colorAccent" label="アクセント" value={data.colorAccent} onChange={val => setData({ ...data, colorAccent: val })} />
                         </div>
                     </div>
 
