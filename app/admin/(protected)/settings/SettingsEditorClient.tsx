@@ -53,15 +53,15 @@ export default function SettingsEditorClient({ initialData, action }: any) {
                         <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
                             <div style={{ flex: 1 }}>
                                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>メインカラー</label>
-                                <input type="color" name="colorPrimary" defaultValue={initialData.colorPrimary} onChange={e => setData({ ...data, colorPrimary: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
+                                <input type="color" name="colorPrimary" value={data.colorPrimary} onChange={e => setData({ ...data, colorPrimary: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
                             </div>
                             <div style={{ flex: 1 }}>
                                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>サブカラー</label>
-                                <input type="color" name="colorSecondary" defaultValue={initialData.colorSecondary} onChange={e => setData({ ...data, colorSecondary: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
+                                <input type="color" name="colorSecondary" value={data.colorSecondary} onChange={e => setData({ ...data, colorSecondary: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
                             </div>
                             <div style={{ flex: 1 }}>
                                 <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem', fontSize: '0.9rem' }}>アクセント</label>
-                                <input type="color" name="colorAccent" defaultValue={initialData.colorAccent} onChange={e => setData({ ...data, colorAccent: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
+                                <input type="color" name="colorAccent" value={data.colorAccent} onChange={e => setData({ ...data, colorAccent: e.target.value })} style={{ width: '100%', height: '50px', borderRadius: '8px', cursor: 'pointer' }} />
                             </div>
                         </div>
                     </div>
