@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: "命を救うための心肺蘇生や一次救命処置の最新知識と技術を普及するアカデミー",
 };
 
+export const dynamic = 'force-dynamic'
+
 export default async function RootLayout({
   children,
 }: Readonly<{
