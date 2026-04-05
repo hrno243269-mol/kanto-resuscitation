@@ -1,0 +1,81 @@
+.page {
+    padding: 4rem 1rem;
+    min-height: 60vh;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.pageTitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+}
+
+.eventList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.eventCard {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.eventDate {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.eventTitle {
+    font-size: 1.25rem;
+    color: var(--color-text-main);
+    margin-bottom: 0.25rem;
+}
+
+.eventLocation {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.eventDesc {
+    color: var(--color-text-main);
+    margin-top: 0.5rem;
+}
+
+.backLink {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.backLink a {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 30px;
+    color: var(--color-text-main);
+    transition: all 0.2s;
+}
+
+.backLink a:hover {
+    background: var(--color-surface);
+}

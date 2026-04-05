@@ -1,0 +1,44 @@
+.footer {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 3rem 0 0;
+    margin-top: 4rem;
+}
+
+.footerInner {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footerLogo {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.contactTitle {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.email {
+    color: var(--color-surface);
+    text-decoration: underline;
+}
+
+.copy {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    .footerInner {
+        flex-direction: column;
+        text-align: center;
+    }
+}

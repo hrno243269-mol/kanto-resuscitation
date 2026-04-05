@@ -1,0 +1,251 @@
+.topPage {
+    width: 100%;
+}
+
+.heroSection {
+    background-position: center;
+    background-size: cover;
+    height: 80vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 7rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroTitle {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+    color: #f5f5f7;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.heroCatchcopy {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    margin-bottom: 8rem;
+}
+
+.sectionTitle {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    letter-spacing: -0.04em;
+}
+
+.philosophyContent {
+    text-align: center;
+    background: #ffffff;
+    padding: 5rem 3rem;
+    border-radius: 28px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.eventList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.eventCard {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    display: flex;
+    flex-direction: column;
+}
+
+.eventCard:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+    /* Apple float */
+}
+
+.eventDate {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.eventTitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1d1d1f;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.eventLocation {
+    font-size: 0.95rem;
+    color: #86868b;
+    margin-bottom: 1.2rem;
+}
+
+.eventDesc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #475569;
+    flex: 1;
+}
+
+.moreLink {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.moreLink a {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    border-radius: 980px;
+    /* Pillow shape typical of Apple */
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.moreLink a:hover {
+    background-color: #1d1d1f;
+    color: white;
+    transform: scale(1.03);
+}
+
+.linksGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.linkCard {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.linkCard:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.linkCard h3 {
+    margin-bottom: 2rem;
+    color: #1d1d1f;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.simpleList {
+    list-style: none;
+}
+
+.simpleList li {
+    margin-bottom: 1.2rem;
+}
+
+.simpleList a {
+    color: var(--color-secondary);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.2s;
+    font-size: 1.05rem;
+}
+
+.simpleList a::before {
+    content: '→';
+    margin-right: 0.75rem;
+    font-size: 0.9em;
+    color: #86868b;
+    transition: transform 0.2s;
+}
+
+.simpleList a:hover {
+    color: var(--color-primary);
+}
+
+.simpleList a:hover::before {
+    transform: translateX(6px);
+    color: var(--color-primary);
+}
+
+.adminCornerLink {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    padding: 12px 24px;
+    border-radius: 980px;
+    font-size: 0.95rem;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.adminCornerLink:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.adminCornerLink a {
+    color: #1d1d1f;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .linksGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+}
