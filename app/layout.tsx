@@ -37,11 +37,7 @@ export default async function RootLayout({
   const titleSize = getValue('titleFontSize', '42')
 
   return (
-    <html lang="ja" className={`${geistSans.variable} ${geistMono.variable}`} style={{
-      '--color-primary': primary,
-      '--color-secondary': secondary,
-      '--color-accent': accent,
-    } as React.CSSProperties}>
+    <html lang="ja" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -69,7 +65,14 @@ export default async function RootLayout({
       font-size: ${Math.round(Number(titleSize) * 0.55)}px !important;
     }
   `}} />
-        {children}
+        <div style={{
+          display: 'contents',
+          '--color-primary': primary,
+          '--color-secondary': secondary,
+          '--color-accent': accent,
+        } as React.CSSProperties}>
+          {children}
+        </div>
       </body>
     </html>
   );
