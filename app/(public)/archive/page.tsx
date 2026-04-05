@@ -31,6 +31,15 @@ export default async function ArchivePage() {
                                     <a href={event.pamphletUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', padding: '0.4rem 1rem', border: '1px solid var(--color-primary)', color: 'var(--color-primary)', borderRadius: '4px', fontSize: '0.85rem' }}>当時のパンフレット</a>
                                 )}
                             </div>
+
+                            {event.pamphletUrl && /\.(jpg|jpeg|png|gif|webp)$/i.test(event.pamphletUrl) && (
+                                <div style={{ marginTop: '1rem' }}>
+                                    <a href={event.pamphletUrl} target="_blank" rel="noopener noreferrer">
+                                        <img src={event.pamphletUrl} alt="当時のフライヤー・パンフレット" style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'contain', border: '1px solid #eee', borderRadius: '8px' }} />
+                                    </a>
+                                </div>
+                            )}
+
                             {event.qrImageUrl && (
                                 <div style={{ marginTop: '1rem' }}>
                                     <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', marginBottom: '0.2rem' }}>当時の案内QR</p>
