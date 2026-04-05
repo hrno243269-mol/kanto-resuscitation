@@ -9,7 +9,11 @@ export default function SettingsEditorClient({ initialData, action }: any) {
     const [data, setData] = useState(initialData)
 
     return (
-        <div className={styles.splitContainer}>
+        <div className={styles.splitContainer} style={{
+            '--color-primary': data.colorPrimary,
+            '--color-secondary': data.colorSecondary,
+            '--color-accent': data.colorAccent,
+        } as React.CSSProperties}>
             <div className={styles.editorPane}>
                 <h1 className={styles.pageTitle}>サイト共通設定</h1>
                 <p style={{ fontSize: '0.9rem', color: '#86868b', marginBottom: '2rem' }}>左で入力した情報が、右側にリアルタイムでプレビュー表示されます。</p>
@@ -44,7 +48,7 @@ export default function SettingsEditorClient({ initialData, action }: any) {
 
                     <div style={{ marginBottom: '3rem', paddingBottom: '2rem', borderBottom: '1px solid #eee' }}>
                         <h2 style={{ fontSize: '1.3rem', marginBottom: '1.5rem', color: '#1d1d1f' }}>テーマカラー設定</h2>
-                        <span style={{ fontSize: '0.85rem', color: '#86868b', display: 'block', marginBottom: '1.5rem' }}>※カラー変更は「全て更新する」を押してリロードした後にサイト全体へ反映されます。</span>
+                        <span style={{ fontSize: '0.85rem', color: '#86868b', display: 'block', marginBottom: '1.5rem' }}>※色を選択した瞬間に、この設定画面のボタンなど全体の色がリアルタイムで変化して確認できます。反映を確認してから「全て更新する」を押してください。</span>
 
                         <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
                             <div style={{ flex: 1 }}>

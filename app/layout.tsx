@@ -37,17 +37,15 @@ export default async function RootLayout({
   const titleSize = getValue('titleFontSize', '42')
 
   return (
-    <html lang="ja" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="ja" className={`${geistSans.variable} ${geistMono.variable}`} style={{
+      '--color-primary': primary,
+      '--color-secondary': secondary,
+      '--color-accent': accent,
+    } as React.CSSProperties}>
       <body>
         <style dangerouslySetInnerHTML={{
           __html: `
     @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap');
-
-    :root {
-      --color-primary: ${primary};
-      --color-secondary: ${secondary};
-      --color-accent: ${accent};
-    }
 
     /* カスタムフォントとサイズの強制上書き（CSS Modulesへのパッチ） */
     body {
