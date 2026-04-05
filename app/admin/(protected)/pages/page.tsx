@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { revalidatePath } from 'next/cache'
+import { updatePages } from '@/app/admin/actions'
 import PagesEditorClient from './PagesEditorClient'
 
 export default async function PagesAdminPage() {
@@ -19,32 +19,6 @@ export default async function PagesAdminPage() {
         greetingPhoto: getImg('greeting', 'photo') || 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400',
         orgBody: getVal('organization', 'body') || '当アカデミーは以下の組織体制で運営されています。',
         orgImage: getImg('organization', 'image') || 'https://images.unsplash.com/photo-1531206715516-11f3b146f6b5?auto=format&fit=crop&q=80&w=800'
-    }
-
-    async function updatePages(formData: FormData) {
-        'use server'
-        const fields = [
-            { p: 'greeting', s: 'title', b: formData.get('greetingTitle') as string },
-            { p: 'greeting', s: 'body', b: formData.get('greetingBody') as string },
-            { p: 'greeting', s: 'signature', b: formData.get('greetingSignature') as string },
-            { p: 'greeting', s: 'photo', i: formData.get('greetingPhoto') as string },
-            { p: 'organization', s: 'body', b: formData.get('orgBody') as string },
-            { p: 'organization', s: 'image', i: formData.get('orgImage') as string },
-        ]
-
-        for (const f of fields) {
-            if (f.b !== undefined || f.i !== undefined) {
-                await prisma.pageContent.upsert({
-                    where: { pageKey_sectionKey: { pageKey: f.p, sectionKey: f.s } },
-                    update: { body: f.b ?? '', imageUrl: f.i ?? '' },
-                    create: { pageKey: f.p, sectionKey: f.s, body: f.b ?? '', imageUrl: f.i ?? '' }
-                })
-            }
-        }
-
-        revalidatePath('/admin/pages')
-        revalidatePath('/greeting')
-        revalidatePath('/organization')
     }
 
     return (
