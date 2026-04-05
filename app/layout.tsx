@@ -13,12 +13,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "関東蘇生アカデミー",
-  description: "命を救うための心肺蘇生や一次救命処置の最新知識と技術を普及するアカデミー",
-};
-
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await prisma.siteSetting.findMany()
+  const getValue = (key: string, defaultVal: string) => {
+    const s = settings.find((s: any) => s.key === key)
+    return s ? s.value : defaultVal
+  }
+
+  const title = getValue('headerTitle', '関東蘇生アカデミー')
+  const description = getValue('siteDescription', '命を救うための心肺蘇生や一次救命処置の最新知識と技術を普及するアカデミー')
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: title,
+      locale: 'ja_JP',
+      type: 'website',
+    }
+  }
+}
 
 export default async function RootLayout({
   children,

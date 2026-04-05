@@ -75,7 +75,13 @@ export default function SettingsEditorClient({ initialData, action }: any) {
 
                 <form action={action}>
                     <div style={{ marginBottom: '3rem', paddingBottom: '2rem', borderBottom: '1px solid #eee' }}>
-                        <h2 style={{ fontSize: '1.3rem', marginBottom: '1.5rem', color: '#1d1d1f' }}>ヘッダー設定</h2>
+                        <h2 style={{ fontSize: '1.3rem', marginBottom: '1.5rem', color: '#1d1d1f' }}>基本情報・SEO設定</h2>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem' }}>サイトの説明文 (LINEや検索結果に表示)</label>
+                            <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.8rem' }}>URLをシェアした際に出る短い説明文（Meta Description）です。</p>
+                            <textarea name="siteDescription" value={data.siteDescription} onChange={e => setData({ ...data, siteDescription: e.target.value })} style={{ width: '100%', padding: '1rem', borderRadius: '12px', border: '1px solid transparent', background: '#f5f5f7', minHeight: '80px' }} required />
+                        </div>
+                        <h2 style={{ fontSize: '1.3rem', marginBottom: '1.5rem', marginTop: '3rem', color: '#1d1d1f' }}>ヘッダー設定</h2>
                         <div style={{ marginBottom: '1.5rem' }}>
                             <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.6rem' }}>サイト名（テキストロゴ）</label>
                             <input type="text" name="headerTitle" value={data.headerTitle} onChange={e => setData({ ...data, headerTitle: e.target.value })} style={{ width: '100%', padding: '1rem', borderRadius: '12px', border: '1px solid transparent', background: '#f5f5f7' }} required />

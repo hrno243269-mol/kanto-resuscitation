@@ -62,7 +62,7 @@ export async function updateSettings(formData: FormData) {
     const keys = [
         'contactName', 'contactEmail', 'colorPrimary', 'colorSecondary', 'colorAccent',
         'fontFamily', 'baseFontSize', 'titleFontSize',
-        'headerTitle', 'footerTitle', 'footerDesc', 'copyright'
+        'headerTitle', 'footerTitle', 'footerDesc', 'copyright', 'siteDescription'
     ]
 
     for (const key of keys) {

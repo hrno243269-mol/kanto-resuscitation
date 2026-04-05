@@ -24,7 +24,8 @@ export default async function SettingsPage() {
         headerTitle: getValue('headerTitle', '関東蘇生アカデミー'),
         footerTitle: getValue('footerTitle', '関東蘇生アカデミー'),
         footerDesc: getValue('footerDesc', '医療・教育・蘇生教育に関わる団体'),
-        copyright: getValue('copyright', 'Kanto Resuscitation Academy')
+        copyright: getValue('copyright', 'Kanto Resuscitation Academy'),
+        siteDescription: getValue('siteDescription', '命を救うための心肺蘇生や一次救命処置の最新知識と技術を普及するアカデミー'),
     }
 
     return (
