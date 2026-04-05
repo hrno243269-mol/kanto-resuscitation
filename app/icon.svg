@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="120" fill="#1e3a8a"/>
+  <path d="M216 120h80v80h80v80h-80v80h-80v-80h-80v-80h80z" fill="#0ca678" opacity="0.9"/>
+  <text x="256" y="276" font-family="-apple-system, system-ui, sans-serif" font-size="140" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="central" letter-spacing="-5">KRA</text>
+</svg>

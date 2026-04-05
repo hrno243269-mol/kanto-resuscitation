@@ -1,5 +1,5 @@
-import styles from './page.module.css'
 import { prisma } from '@/lib/prisma'
+import OrganizationPageView from '@/components/public/OrganizationPageView'
 
 export default async function OrganizationPage() {
     const contents = await prisma.pageContent.findMany({
@@ -12,24 +12,9 @@ export default async function OrganizationPage() {
     const imageUrl = getImg('image', 'https://images.unsplash.com/photo-1531206715516-11f3b146f6b5?auto=format&fit=crop&q=80&w=800')
 
     return (
-        <div className={`container ${styles.page}`}>
-            <h1 className={styles.pageTitle}>組織図</h1>
-
-            <div className={styles.orgContent}>
-                <p className={styles.lead}>
-                    {body.split('\n').map((line: string, i: number) => (
-                        <span key={i}>{line}<br /></span>
-                    ))}
-                </p>
-
-                <div className={styles.imageWrapper}>
-                    <img
-                        src={imageUrl}
-                        alt="組織図"
-                        className={styles.orgImage}
-                    />
-                </div>
-            </div>
-        </div>
+        <OrganizationPageView
+            body={body}
+            imageUrl={imageUrl}
+        />
     )
 }

@@ -1,0 +1,60 @@
+.container {
+    margin-bottom: 2rem;
+}
+
+.label {
+    display: block;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+}
+
+.hint {
+    font-size: 0.85rem;
+    color: #86868b;
+    margin-top: -0.4rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.loading {
+    padding: 2rem;
+    text-align: center;
+    color: #86868b;
+    background: #f5f5f7;
+    border-radius: 12px;
+}
+
+.editorWrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.editorWrapper:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Override default quill borders to match Apple style */
+.editorWrapper :global(.ql-toolbar.ql-snow) {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f7;
+    padding: 12px;
+}
+
+.editorWrapper :global(.ql-container.ql-snow) {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.editorWrapper :global(.ql-editor) {
+    min-height: 200px;
+    padding: 1.5rem;
+}
