@@ -43,6 +43,12 @@ export default async function RootLayout({
           __html: `
     @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap');
 
+    :root {
+      --color-primary: ${primary} !important;
+      --color-secondary: ${secondary} !important;
+      --color-accent: ${accent} !important;
+    }
+
     /* カスタムフォントとサイズの強制上書き（CSS Modulesへのパッチ） */
     body {
       font-family: ${fontFam} !important;
@@ -65,14 +71,7 @@ export default async function RootLayout({
       font-size: ${Math.round(Number(titleSize) * 0.55)}px !important;
     }
   `}} />
-        <div style={{
-          display: 'contents',
-          '--color-primary': primary,
-          '--color-secondary': secondary,
-          '--color-accent': accent,
-        } as React.CSSProperties}>
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );

@@ -9,11 +9,14 @@ export default function SettingsEditorClient({ initialData, action }: any) {
     const [data, setData] = useState(initialData)
 
     return (
-        <div className={styles.splitContainer} style={{
-            '--color-primary': data.colorPrimary,
-            '--color-secondary': data.colorSecondary,
-            '--color-accent': data.colorAccent,
-        } as React.CSSProperties}>
+        <div id="settings-editor" className={styles.splitContainer}>
+            <style>{`
+                #settings-editor {
+                    --color-primary: ${data.colorPrimary} !important;
+                    --color-secondary: ${data.colorSecondary} !important;
+                    --color-accent: ${data.colorAccent} !important;
+                }
+            `}</style>
             <div className={styles.editorPane}>
                 <h1 className={styles.pageTitle}>サイト共通設定</h1>
                 <p style={{ fontSize: '0.9rem', color: '#86868b', marginBottom: '2rem' }}>左で入力した情報が、右側にリアルタイムでプレビュー表示されます。</p>
