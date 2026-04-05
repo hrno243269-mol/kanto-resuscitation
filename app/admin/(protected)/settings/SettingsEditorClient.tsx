@@ -99,6 +99,21 @@ export default function SettingsEditorClient({ initialData, action }: any) {
                     <button type="submit" className={styles.submitBtn}>
                         全て更新する
                     </button>
+
+                    {/* デバッグ用カラープレビューボックス（原因究明用） */}
+                    <div style={{ marginTop: '3rem', padding: '1.5rem', border: '2px dashed #ff3b30', borderRadius: '12px', background: '#fffcfc' }}>
+                        <h3 style={{ marginBottom: '1rem', color: '#ff3b30', fontSize: '1rem' }}>⚠️ 開発者用テスト用ブロック（後で消します）</h3>
+                        <p style={{ marginBottom: '1rem', fontWeight: 'bold' }}>現在のデータ値: {data.colorPrimary}</p>
+                        <div style={{ background: data.colorPrimary, height: '50px', width: '100%', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', textShadow: '0 0 4px rgba(0,0,0,0.5)' }}>
+                            ① ここが変われば、カラーピッカーの入力自体は成功しています
+                        </div>
+                        <div style={{ background: 'var(--color-primary, #000)', height: '50px', width: '100%', borderRadius: '6px', marginTop: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', textShadow: '0 0 4px rgba(0,0,0,0.5)' }}>
+                            ② ここが変われば、CSS変数の連携も成功しています
+                        </div>
+                        <p style={{ marginTop: '1rem', fontSize: '0.85rem', color: '#666' }}>
+                            ※もし①も②も真っ黒、もしくは全く操作できない場合は、現在起動中の開発サーバー（npm run dev）が完全にフリーズしているため、ターミナルで Ctrl+C を押して終了し、再度 npm run dev を実行してください。
+                        </p>
+                    </div>
                 </form>
             </div>
 
